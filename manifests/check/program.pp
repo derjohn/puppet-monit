@@ -19,6 +19,8 @@ define monit::check::program(
   $order      = 0,
 ) {
 
+  validate_absolute_path($path.split(' ')[0])
+
   monit::check::instance { "${name}_instance":
     ensure   => $ensure,
     name     => $name,
